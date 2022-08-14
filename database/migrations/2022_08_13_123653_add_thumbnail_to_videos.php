@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('videos', function (Blueprint $table) {
-            $table->text('description');
+            $table->text('thumbnail');
         });
     }
 
@@ -26,7 +26,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('videos', function (Blueprint $table) {
-            $table->dropColumn('description');
+            $table->dropColumn('thumbnail');
         });
     }
 };

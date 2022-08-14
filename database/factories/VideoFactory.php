@@ -23,7 +23,8 @@ class VideoFactory extends Factory
             'url' => $this->faker->imageUrl(640, 480, 'animals', true),
             'length' => $this->faker->randomNumber(3),
             'slug' => $this->faker->slug(),
-            'description' => $persianFaker->realText()
+            'description' => $persianFaker->realText(),
+            'thumbnail' => 'https://loremflicker.com/446/240/world?random=' . rand(1, 99)
         ];
     }
 }

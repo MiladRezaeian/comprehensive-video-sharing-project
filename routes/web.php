@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\IndexController;
 use App\Http\Controllers\VideoController;
 use App\Models\Video;
 use Illuminate\Support\Facades\Route;
@@ -15,12 +16,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/factory', function (){
-   Video::factory()->create();
-});
+//Route::get('/', [IndexController::class, 'index']);
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
-Route::get('videos', [VideoController::class, 'index']);
+Route::get('/videos', [VideoController::class, 'index']);
+
+Route::get('/factory', function (){
+    Video::factory()->create();
+});
