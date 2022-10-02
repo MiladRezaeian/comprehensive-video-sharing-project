@@ -56,10 +56,10 @@ services:
         restart: always
         environment:
             - PMA_HOST=mysql
-            - UPLOAD_LIMIT:0
-            - MAX_EXECUTION_TIME:0
-            - MEMORY_LIMIT:-1
-            - PMA_ARBITRARY:1
+            - UPLOAD_LIMIT=300M
+            - MAX_EXECUTION_TIME=0
+            - MEMORY_LIMIT=-1
+            - PMA_ARBITRARY=1
         ports:
             - '8080:80'
         depends_on:
