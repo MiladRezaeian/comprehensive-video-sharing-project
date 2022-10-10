@@ -56,7 +56,7 @@ services:
         restart: always
         environment:
             - PMA_HOST=mysql
-            - UPLOAD_LIMIT=300M
+            - UPLOAD_LIMIT=10000M
             - MAX_EXECUTION_TIME=0
             - MEMORY_LIMIT=-1
             - PMA_ARBITRARY=1
