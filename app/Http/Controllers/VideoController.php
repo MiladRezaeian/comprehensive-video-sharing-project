@@ -19,9 +19,8 @@ class VideoController extends Controller
 //        return $video;
     }
 
-
-    public function best()
+    public function create()
     {
-        echo "hello from best method";
+        return view('videos.create');
     }
 }
