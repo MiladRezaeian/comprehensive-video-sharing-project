@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Video;
+use Illuminate\Http\Request;
 
 class VideoController extends Controller
 {
@@ -22,5 +23,10 @@ class VideoController extends Controller
     public function create()
     {
         return view('videos.create');
+    }
+
+    public function store(Request $request)
+    {
+        dd($request->all());
     }
 }
