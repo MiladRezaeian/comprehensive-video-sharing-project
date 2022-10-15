@@ -27,6 +27,6 @@ class VideoController extends Controller
 
     public function store(Request $request)
     {
-        dd($request->all());
+        Video::create($request->all());
     }
 }

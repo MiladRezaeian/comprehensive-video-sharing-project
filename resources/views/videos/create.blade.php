@@ -15,7 +15,7 @@
                     </div>
                     <div class="col-md-6">
                         <label>مدت زمان</label>
-                        <input type="text" name="len" class="form-control" placeholder="مدت زمان">
+                        <input type="text" name="length" class="form-control" placeholder="مدت زمان">
                     </div>
                     <div class="col-md-6">
                         <label>نام یکتا</label>
@@ -31,7 +31,7 @@
                     </div>
                     <div class="col-md-12">
                         <label>توضیحات</label>
-                        <textarea class="form-control" rows="4" placeholder="توضیح"></textarea>
+                        <textarea name="description" class="form-control" rows="4" placeholder="توضیح"></textarea>
                     </div>
                     <div class="col-md-6">
                         <button type="submit" id="contact_submit" class="btn btn-dm">ذخیره</button>

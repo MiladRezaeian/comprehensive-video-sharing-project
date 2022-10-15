@@ -9,6 +9,10 @@ class Video extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name', 'length', 'url', 'thumbnail', 'slug', 'description'
+    ];
+
     public function getLengthAttribute($value)
     {
         return gmdate('i:s', $value);
