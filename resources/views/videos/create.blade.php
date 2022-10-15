@@ -11,12 +11,12 @@
                 @csrf
                 <div class="row">
                     <div class="col-md-6">
-                        <label>عنوان</label>
-                        <input type="text" name="name" class="form-control" placeholder="عنوان">
+                        <label>@lang('videos.name')</label>
+                        <input type="text" name="name" class="form-control" placeholder="@lang('videos.name')">
                     </div>
                     <div class="col-md-6">
-                        <label>مدت زمان</label>
-                        <input type="text" name="length" class="form-control" placeholder="مدت زمان">
+                        <label>@lang('videos.length')</label>
+                        <input type="text" name="length" class="form-control" placeholder="@lang('videos.length')">
                     </div>
                     <div class="col-md-6">
                         <label>نام یکتا</label>
