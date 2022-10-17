@@ -17,4 +17,9 @@ class Video extends Model
     {
         return gmdate('i:s', $value);
     }
+
+    public function relatedVideos(int $count = 0)
+    {
+        return Video::all()->random($count);
+    }
 }
