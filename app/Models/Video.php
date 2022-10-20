@@ -10,7 +10,7 @@ class Video extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'length', 'url', 'thumbnail', 'slug', 'description'
+        'name', 'length', 'url', 'thumbnail', 'slug', 'description', 'category_id'
     ];
 
     public function getRouteKeyName()
