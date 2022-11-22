@@ -9,6 +9,7 @@
     </div>
 
     <div class="form-output">
+        <x-validation-errors></x-validation-errors>
         <form action="{{ route('login.store') }}" method="post">
             @csrf
             <div class="form-group label-floating">
