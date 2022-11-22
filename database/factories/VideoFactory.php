@@ -26,7 +26,8 @@ class VideoFactory extends Factory
             'slug' => $this->faker->slug(),
             'description' => $persianFaker->realText(),
             'thumbnail' => 'https://loremflicker.com/446/240/world?random=' . rand(1, 99),
-            'category_id' => Category::first() ?? Category::factory()
+            'category_id' => Category::first() ?? Category::factory(),
+            'user_id' => User::first() ?? User::factory
         ];
     }
 }
