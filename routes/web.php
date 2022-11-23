@@ -10,6 +10,7 @@ use App\Models\Video;
 
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\URL;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,4 +71,12 @@ require __DIR__ . '/auth.php';
 Route::get('/email', function () {
     $user = User::first();
     Mail::to('milad.rezaeiann@gmail.com')->send(new VerifyEmail($user));
+});
+
+Route::get('/verify/{id}', function () {
+    dd(request()->hasValidSignature());
+})->name('verify');
+
+Route::get('/generate', function () {
+    echo URL::temporarySignedRoute('verify', now()->addSeconds(20), ['id' => 5]);
 });
