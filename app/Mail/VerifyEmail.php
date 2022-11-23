@@ -46,7 +46,10 @@ class VerifyEmail extends Mailable
     public function content()
     {
         return new Content(
-            view: 'emails.verify-emails',
+            markdown: 'emails.verify-emails',
+            with: [
+                'url' => 'www.example.com',
+            ],
         );
     }
 
