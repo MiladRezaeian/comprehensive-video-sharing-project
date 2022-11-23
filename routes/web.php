@@ -4,8 +4,11 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryVideoController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\VideoController;
+use App\Mail\VerifyEmail;
+use App\Models\User;
 use App\Models\Video;
 
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,13 +34,13 @@ Route::post('/videos/{video}/', [VideoController::class, 'update'])->name('video
 
 Route::get('/categories/{category:slug}/videos', [CategoryVideoController::class, 'index'])->name('categories.videos.index');
 
-Route::get('/upload', function (){
+Route::get('/upload', function () {
     return view('videos.create');
 });
 
 Route::get('/videos', [VideoController::class, 'index']);
 
-Route::get('/factory', function (){
+Route::get('/factory', function () {
     Video::factory()->create();
 });
 
@@ -62,4 +65,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
+
+Route::get('/email', function () {
+    $user = User::first();
+    Mail::to('milad.rezaeiann@gmail.com')->send(new VerifyEmail($user));
+});
