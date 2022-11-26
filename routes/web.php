@@ -1,5 +1,6 @@
 <?php
 
+use App\Events\VideoCreated;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryVideoController;
 use App\Http\Controllers\IndexController;
@@ -84,4 +85,9 @@ Route::get('/generate', function () {
 
 Route::get('/jobs', function () {
     ProcessVideo::dispatch();
+});
+
+Route::get('/event', function () {
+    $video = Video::first();
+    VideoCreated::dispatch($video);
 });
