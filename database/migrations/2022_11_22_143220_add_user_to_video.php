@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('video', function (Blueprint $table) {
+        Schema::table('videos', function (Blueprint $table) {
             $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
         });
     }
@@ -25,7 +25,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('video', function (Blueprint $table) {
+        Schema::table('videos', function (Blueprint $table) {
             $table->dropColumn('user_id');
         });
     }
