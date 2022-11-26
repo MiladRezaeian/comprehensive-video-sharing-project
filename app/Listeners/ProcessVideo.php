@@ -6,8 +6,10 @@ use App\Events\VideoCreated;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
-class ProcessVideo
+class ProcessVideo implements ShouldQueue
 {
+    public $queue = 'low';
+
     /**
      * Create the event listener.
      *
