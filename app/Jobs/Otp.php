@@ -10,7 +10,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail;
 
-class ProcessVideo implements ShouldQueue
+class Otp implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -21,7 +21,7 @@ class ProcessVideo implements ShouldQueue
      */
     public function __construct()
     {
-        $this->onQueue('low');
+        $this->onQueue('high');
     }
 
     /**
@@ -31,7 +31,7 @@ class ProcessVideo implements ShouldQueue
      */
     public function handle()
     {
-        Mail::raw('Process Video', function($message){
+        Mail::raw('OTP', function($message){
             $message->to('milad.rezaeiann@gmail.com');
         });
     }
