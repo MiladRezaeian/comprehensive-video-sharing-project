@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\CheckVerifyEmail;
 use App\Http\Requests\StoreVideoRequest;
 use App\Http\Requests\UpdateVideoRequest;
 use App\Models\Category;
@@ -10,6 +11,12 @@ use Illuminate\Http\Request;
 
 class VideoController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(CheckVerifyEmail::class, ['only' => ['create']]);
+    }
+
     public function index()
     {
 //        $data = ['A', 'B', 'C', 'D'];
@@ -46,7 +53,7 @@ class VideoController extends Controller
         return view('videos.edit', compact('video', 'categories'));
     }
 
-    public function update(UpdateVideoRequest $request,Video $video)
+    public function update(UpdateVideoRequest $request, Video $video)
     {
         $video->update($request->all());
 
