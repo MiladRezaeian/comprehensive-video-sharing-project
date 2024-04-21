@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -27,7 +28,7 @@ class VideoFactory extends Factory
             'description' => $persianFaker->realText(),
             'thumbnail' => 'https://loremflicker.com/446/240/world?random=' . rand(1, 99),
             'category_id' => Category::first() ?? Category::factory(),
-            'user_id' => User::first() ?? User::factory
+            'user_id' => User::first() ?? User::factory()
         ];
     }
 }
