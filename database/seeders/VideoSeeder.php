@@ -15,6 +15,11 @@ class VideoSeeder extends Seeder
      */
     public function run()
     {
-        Video::factory()->count(20)->create();
+        Video::factory()->create([
+           'name' => 'Best Video'
+        ]);
+
+        Video::factory()->hasComments(4)->count(20)->create();
     }
 }
+
