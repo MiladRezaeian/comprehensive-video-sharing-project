@@ -16,6 +16,6 @@ class Category extends Model
 
     public function getRandomVideos(int $count = 0)
     {
-        return $this->videos()->inRandomOrder()->get()->take($count);
+        return $this->videos()->inRandomOrder()->get()->take($count)->load('user');
     }
 }

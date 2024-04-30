@@ -44,6 +44,9 @@ class VideoController extends Controller
 
     public function show(Request $request, Video $video)
     {
+        // N + 1 Query resolve by nested
+        $video->load('comments.user');
+
         return view('videos.show', compact('video'));
     }
 
