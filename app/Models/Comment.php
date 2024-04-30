@@ -18,4 +18,9 @@ class Comment extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+//    public function getCreatedAtInHumanAttribute()
+//    {
+//        return (new Verta($this->created_at))->formatDifference();
+//    }
 }
