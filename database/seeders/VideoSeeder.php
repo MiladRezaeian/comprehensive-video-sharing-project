@@ -19,7 +19,7 @@ class VideoSeeder extends Seeder
            'name' => 'Best Video'
         ]);
 
-        Video::factory()->hasComments(4)->count(20)->create();
+        Video::factory()->hasComments(4)->hasLikes(10)->count(20)->create();
     }
 }
 

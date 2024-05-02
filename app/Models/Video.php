@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use App\Models\Traits\Likeable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Video extends Model
 {
-    use HasFactory;
+    use HasFactory, Likeable;
 
     protected $fillable = [
         'name', 'length', 'url', 'thumbnail', 'slug', 'description', 'category_id'
