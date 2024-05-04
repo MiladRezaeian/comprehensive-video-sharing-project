@@ -23,10 +23,6 @@
                         <input type="file" name="file" class="form-control">
                     </div>
                     <div class="col-md-6">
-                        <label>تصویر بندانگشتی</label>
-                        <input type="text" name="thumbnail" class="form-control" value="{{old("thumbnail")}}" placeholder="تصویر بندانگشتی">
-                    </div>
-                    <div class="col-md-6">
                         <label>دسته بندی</label>
                         <select name="category_id" id="category" class="form-control">
                             @foreach($categories as $category)

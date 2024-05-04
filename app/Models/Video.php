@@ -64,4 +64,9 @@ class Video extends Model
     {
         return '/storage/' . $this->path;
     }
+
+    public function getVideoThumbnailAttribute()
+    {
+        return '/storage/' . $this->thumbnail;
+    }
 }
