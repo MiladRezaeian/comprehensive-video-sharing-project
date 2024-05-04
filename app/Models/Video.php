@@ -12,7 +12,7 @@ class Video extends Model
     use HasFactory, Likeable;
 
     protected $fillable = [
-        'name', 'length', 'url', 'thumbnail', 'slug', 'description', 'category_id'
+        'name', 'length', 'path', 'thumbnail', 'slug', 'description', 'category_id'
     ];
 
     public function getRouteKeyName()
@@ -62,6 +62,6 @@ class Video extends Model
 
     public function getVideoUrlAttribute()
     {
-        return '/storage/' . $this->url;
+        return '/storage/' . $this->path;
     }
 }
