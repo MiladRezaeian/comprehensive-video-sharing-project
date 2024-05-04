@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Traits\Likeable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Video extends Model
 {
@@ -57,5 +58,10 @@ class Video extends Model
     public function comments()
     {
         return $this->hasMany(Comment::class)->orderBy('created_at', 'desc');
+    }
+
+    public function getVideoUrlAttribute()
+    {
+        return '/storage/' . $this->url;
     }
 }
