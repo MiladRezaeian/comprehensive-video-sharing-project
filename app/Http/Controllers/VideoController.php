@@ -40,7 +40,6 @@ class VideoController extends Controller
     public function store(StoreVideoRequest $request)
     {
         $path = Storage::putFile('videos', $request->file);
-
         $request->merge([
             'url' => $path
         ]);
@@ -64,6 +63,13 @@ class VideoController extends Controller
 
     public function update(UpdateVideoRequest $request, Video $video)
     {
+        if ($request->hasFile('file')) {
+            $path = Storage::putFile('videos', $request->file);
+            $request->merge([
+                'url' => $path
+            ]);
+        }
+
         $video->update($request->all());
 
         return redirect()->route('videos.show', $video->slug)->with('alert', __('messages.video_edited'));
