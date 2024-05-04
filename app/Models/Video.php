@@ -22,7 +22,7 @@ class Video extends Model
 
     public function getLengthInHumanAttribute()
     {
-        return gmdate('i:s', $this->value);
+        return gmdate('i:s', $this->length);
     }
 
     public function relatedVideos(int $count = 0)
