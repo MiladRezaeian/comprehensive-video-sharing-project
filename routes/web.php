@@ -2,6 +2,7 @@
 
 use App\Events\VideoCreated;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\DisLikeController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryVideoController;
@@ -103,3 +104,4 @@ Route::get('/notify', function () {
 
 Route::post('/videos/{video}/comments', [CommentController::class, 'store'])->name('comments.store');
 Route::get('/{likeable_type}/{likeable_id}/like', [LikeController::class,'store'])->name('likes.store');
+Route::get('/{likeable_type}/{likeable_id}/dislike', [DisLikeController::class,'store'])->name('dislikes.store');
