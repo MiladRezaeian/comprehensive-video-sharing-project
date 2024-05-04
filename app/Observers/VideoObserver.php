@@ -26,7 +26,9 @@ class VideoObserver
      */
     public function updated(Video $video)
     {
-        Storage::delete($video->getOriginal('path'));
+        if ($video->wasChanged('path')){
+            Storage::delete($video->getOriginal('path'));
+        }
     }
 
     /**
