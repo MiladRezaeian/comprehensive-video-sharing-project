@@ -102,4 +102,4 @@ Route::get('/notify', function () {
 });
 
 Route::post('/videos/{video}/comments', [CommentController::class, 'store'])->name('comments.store');
-Route::get('/video/{video}/like', [LikeController::class,'store'])->name('videos.like');
+Route::get('/{likeable_type}/{likeable_id}/like', [LikeController::class,'store'])->name('likes.store');
