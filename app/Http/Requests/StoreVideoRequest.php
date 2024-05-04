@@ -28,9 +28,9 @@ class StoreVideoRequest extends FormRequest
             'name' => ['required'],
             'length' => ['required', 'integer'],
             'slug' => ['required', 'unique:videos,slug', 'alpha_dash'],
-            'url' => ['required', 'url'],
             'thumbnail' => ['required', 'url'],
-            'category_id' => ['required', 'exists:categories,id']
+            'category_id' => ['required', 'exists:categories,id'],
+            'file' => ['required', 'file', 'mimetypes:video/mp4']
         ];
     }
 
@@ -44,6 +44,13 @@ class StoreVideoRequest extends FormRequest
         $this->merge([
             'slug' => Str::slug($this->slug),
         ]);
+    }
+
+    public function messages()
+    {
+        return [
+            'file.*' => 'فایل باید ویدیویی باشد.'
+        ];
     }
 }
 
