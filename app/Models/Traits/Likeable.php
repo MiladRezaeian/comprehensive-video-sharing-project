@@ -26,4 +26,20 @@ trait Likeable
             ->where('vote', -1)
             ->count();
     }
+
+    public function likeBy(User $user)
+    {
+        return $this->likes()->create([
+            'vote' => 1,
+            'user_id' => $user->id
+        ]);
+    }
+
+    public function dislikeBy(User $user)
+    {
+        return $this->likes()->create([
+            'vote' => -1,
+            'user_id' => $user->id
+        ]);
+    }
 }
