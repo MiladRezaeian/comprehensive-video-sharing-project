@@ -74,6 +74,9 @@ class Video extends Model
 
     public function scopeFilter(Builder $builder, array $params)
     {
+        if (isset($params['q'])) {
+            $builder->where('name', 'like', "%{$params['q']}%");
+        }
         if (isset($params['length']) && $params['length'] == 1) {
             $builder->where('length', '<', 60);
         }
