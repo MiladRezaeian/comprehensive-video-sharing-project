@@ -9,7 +9,12 @@ class CategoryVideoController extends Controller
 {
     public function index(Request $request, Category $category)
     {
-        $videos = $category->videos()->filter($request->all())->paginate();
+        $videos = $category
+            ->videos()
+            ->filter($request->all())
+            ->sort($request->all())
+            ->paginate()
+            ->withQueryString();
         $title = $category->name;
 
         return view('videos.index', compact('videos', 'title'));

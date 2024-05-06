@@ -85,4 +85,16 @@ class Video extends Model
 
         return $builder;
     }
+
+    public function scopeSort(Builder $builder, array $params)
+    {
+        if (isset($params['sortBy']) && $params['sortBy'] == 'length') {
+            $builder->orderBy('length', 'desc');
+        }
+        if (isset($params['sortBy']) && $params['sortBy'] == 'created_at') {
+            $builder->orderBy('created_at', 'desc');
+        }
+
+        return $builder;
+    }
 }
