@@ -6,6 +6,7 @@ use App\Models\Traits\Likeable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class Video extends Model
@@ -88,6 +89,13 @@ class Video extends Model
 
     public function scopeSort(Builder $builder, array $params)
     {
+        if (isset($params['sortBy']) && $params['sortBy'] == 'like') {
+            $builder->leftJoin('likes', function ($join) {
+                $join->on('likes.likeable_id', '=', 'videos.id')
+                    ->where('likes.likeable_type', '=', 'App\Models\Video')
+                    ->where('likes.vote', '=', 1);
+            })->groupBy('videos.id')->select(['videos.*', DB::raw('count(likes.id) as count')])->orderBy('count', 'desc');
+        }
         if (isset($params['sortBy']) && $params['sortBy'] == 'length') {
             $builder->orderBy('length', 'desc');
         }
