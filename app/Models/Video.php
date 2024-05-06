@@ -77,4 +77,6 @@ class Video extends Model
     {
         return (new VideoFilters($builder))->apply($params);
     }
+
+
 }
