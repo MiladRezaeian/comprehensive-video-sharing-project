@@ -18,6 +18,10 @@ class Video extends Model
         'name', 'length', 'path', 'thumbnail', 'slug', 'description', 'category_id'
     ];
 
+    protected $hidden = ['category_id', 'user'];
+
+    protected $appends = ['owner_name'];
+
     public function getRouteKeyName()
     {
         return 'slug';
