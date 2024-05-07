@@ -31,7 +31,9 @@ class VideoPolicy
      */
     public function view(User $user, Video $video)
     {
-        //
+        return $video->user_id == $user->id
+            ? Response::allow()
+            : Response::deny('This video is not yours.');
     }
 
     /**
