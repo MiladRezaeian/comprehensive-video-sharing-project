@@ -16,8 +16,6 @@ class CommentController extends Controller
 
     public function store(StoreCommentRequest $request, Video $video)
     {
-        $this->authorize('create', [Comment::class, $video]);
-
         $video->comments()->create([
             'user_id' => auth()->id(),
             'body' => $request->body
