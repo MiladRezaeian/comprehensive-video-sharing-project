@@ -55,6 +55,8 @@ class VideoController extends Controller
 
     public function edit(Video $video)
     {
+        $this->authorize('edit-video', $video);
+
         $categories = Category::all();
         return view('videos.edit', compact('video', 'categories'));
     }
