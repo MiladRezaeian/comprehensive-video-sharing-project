@@ -7,7 +7,7 @@
         </div>
         <div class="video-info">
             <a href="{{ route('videos.show', $video->slug) }}" class="title"> {{ $video->name }} </a>
-            @can('edit-video', $video)
+            @can('update', $video)
                 <a href="{{ route('videos.edit', $video->slug) }}">
                     <i class="fa fa-pencil" aria-hidden="true"></i>
                 </a>

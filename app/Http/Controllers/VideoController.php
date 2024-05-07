@@ -55,7 +55,7 @@ class VideoController extends Controller
 
     public function edit(Video $video)
     {
-        $this->authorize('edit-video', $video);
+        $this->authorize('update', $video);
 
         $categories = Category::all();
         return view('videos.edit', compact('video', 'categories'));
@@ -63,6 +63,8 @@ class VideoController extends Controller
 
     public function update(UpdateVideoRequest $request, Video $video)
     {
+        $this->authorize('update', $video);
+
         (new VideoService)->update($video, $request->all());
         return redirect()->route('videos.show', $video->slug)->with('alert', __('messages.video_edited'));
     }
