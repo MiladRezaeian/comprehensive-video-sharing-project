@@ -26,6 +26,9 @@ Route::prefix('v1')->group(function () {
     Route::post('videos', [VideoController::class, 'store']);
     Route::put('videos/{video:slug}', [VideoController::class, 'update']);
     Route::delete('videos/{video:slug}', [VideoController::class, 'destroy']);
-});
 
-Route::post('v1/auth/login', [AuthController::class, 'login']);
+    Route::prefix('auth')->group(function () {
+        Route::post('login', [AuthController::class, 'login']);
+        Route::get('me', [AuthController::class, 'me'])->middleware('auth:sanctum');
+    });
+});

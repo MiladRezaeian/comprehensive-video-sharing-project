@@ -13,9 +13,13 @@ class AuthController extends Controller
         $request->authenticate();
         $token = auth()->user()->createToken('API');
 
-
         return response()->json([
             'token' => $token->plainTextToken
         ]);
+    }
+
+    public function me()
+    {
+        return auth()->user();
     }
 }
