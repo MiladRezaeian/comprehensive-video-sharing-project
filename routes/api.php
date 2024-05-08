@@ -22,5 +22,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::prefix('v1')->group(function () {
     Route::get('videos/{video:slug}', [VideoController::class, 'show']);
     Route::get('videos', [VideoController::class, 'index']);
+    Route::post('videos', [VideoController::class, 'store']);
 });
 
