@@ -13,7 +13,7 @@ class RemoveExpiredTokens extends Command
      *
      * @var string
      */
-    protected $signature = 'tokens:remove_all';
+    protected $signature = 'tokens:remove_all {{--day=7 The number of days to retain expired tokens}}';
 
     /**
      * The console command description.
@@ -31,8 +31,10 @@ class RemoveExpiredTokens extends Command
     {
         $expiration = config('sanctum.expiration');
         if ($expiration) {
-            $tokens = PersonalAccessToken::where('created_at', '<', now()->subMinutes($expiration + (7 * 24 * 60)));
+            $day = $this->option('day');
+            $tokens = PersonalAccessToken::where('created_at', '<', now()->subMinutes($expiration + ($day * 24 * 60)));
             $tokens->delete();
+            $this->info('Expired tokens have been deleted');
 
             return 0;
         }
