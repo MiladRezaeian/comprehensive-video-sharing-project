@@ -7,12 +7,13 @@ use App\Models\Traits\Likeable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class Video extends Model
 {
-    use HasFactory, Likeable;
+    use HasFactory, Likeable, SoftDeletes;
 
     protected $fillable = [
         'name', 'length', 'path', 'thumbnail', 'slug', 'description', 'category_id'
