@@ -39,7 +39,8 @@ class VideoObserver
      */
     public function deleted(Video $video)
     {
-        //
+        Storage::delete($video->path);
+        Storage::delete($video->thumbnail);
     }
 
     /**
