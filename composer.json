@@ -9,7 +9,7 @@
         "ext-http": "*",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.37",
-        "laravel/sanctum": "^3.0",
+        "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.7",
         "php-ffmpeg/php-ffmpeg": "^1.2"
     },
