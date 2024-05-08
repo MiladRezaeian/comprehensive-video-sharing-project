@@ -22,4 +22,13 @@ class AuthController extends Controller
     {
         return auth()->user();
     }
+
+    public function logout()
+    {
+        auth()->user()->tokens()->delete();
+
+        return response()->json([
+            'message' => 'All tokens revoked.'
+        ]);
+    }
 }
