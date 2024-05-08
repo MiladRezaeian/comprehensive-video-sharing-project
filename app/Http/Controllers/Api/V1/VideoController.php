@@ -13,4 +13,11 @@ class VideoController extends Controller
     {
         return new VideoResource($video);
     }
+
+    public function index(Request $request)
+    {
+        $video = Video::filter($request->all())->paginate();
+
+        return VideoResource::collection($video);
+    }
 }
