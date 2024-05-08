@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreVideoRequest;
+use App\Http\Requests\UpdateVideoRequest;
 use App\Http\Resources\VideoResource;
 use App\Models\User;
 use App\Models\Video;
@@ -31,5 +32,12 @@ class VideoController extends Controller
         return response()->json([
             'message' => 'Video created'
         ], 201);
+    }
+
+    public function update(UpdateVideoRequest $request, Video $video)
+    {
+        (new VideoService)->update($video, $request->all());
+
+        return response()->json([], 204);
     }
 }
