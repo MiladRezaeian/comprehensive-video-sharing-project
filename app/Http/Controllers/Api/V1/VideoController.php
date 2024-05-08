@@ -27,7 +27,7 @@ class VideoController extends Controller
 
     public function store(StoreVideoRequest $request)
     {
-        (new VideoService)->create(User::first(), $request->all());
+        (new VideoService)->create(auth()->user(), $request->all());
 
         return response()->json([
             'message' => 'Video created'
@@ -36,6 +36,7 @@ class VideoController extends Controller
 
     public function update(UpdateVideoRequest $request, Video $video)
     {
+        $this->authorize('update', $video);
         (new VideoService)->update($video, $request->all());
 
         return response()->json([], 204);
@@ -43,6 +44,7 @@ class VideoController extends Controller
 
     public function destroy(Video $video)
     {
+        $this->authorize('delete', $video);
         $video->delete();
 
         return response()->json([

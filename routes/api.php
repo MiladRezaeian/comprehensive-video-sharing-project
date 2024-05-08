@@ -23,9 +23,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::prefix('v1')->group(function () {
     Route::get('videos/{video:slug}', [VideoController::class, 'show']);
     Route::get('videos', [VideoController::class, 'index']);
-    Route::post('videos', [VideoController::class, 'store']);
-    Route::put('videos/{video:slug}', [VideoController::class, 'update']);
-    Route::delete('videos/{video:slug}', [VideoController::class, 'destroy']);
+    Route::post('videos', [VideoController::class, 'store'])->middleware('auth:sanctum');
+    Route::put('videos/{video:slug}', [VideoController::class, 'update'])->middleware('auth:sanctum');
+    Route::delete('videos/{video:slug}', [VideoController::class, 'destroy'])->middleware('auth:sanctum');
 
     Route::prefix('auth')->group(function () {
         Route::post('login', [AuthController::class, 'login']);
