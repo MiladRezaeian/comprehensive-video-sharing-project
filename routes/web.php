@@ -105,3 +105,8 @@ Route::get('/notify', function () {
 Route::post('/videos/{video}/comments', [CommentController::class, 'store'])->name('comments.store');
 Route::get('/{likeable_type}/{likeable_id}/like', [LikeController::class,'store'])->name('likes.store');
 Route::get('/{likeable_type}/{likeable_id}/dislike', [DisLikeController::class,'store'])->name('dislikes.store');
+
+
+Route::get('exe', function (){
+    throw new \App\Exceptions\InvalidTypeException('test');
+});
